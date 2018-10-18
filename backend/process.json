@@ -1,0 +1,22 @@
+{
+    "apps": [
+        {
+            "name": "crypto-buy",
+            "script": "./build/index.js",
+            "env": {
+                "NODE_ENV": "production"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "NODE_CONFIG_DIR": "/usr/app/frontend/service",
+                "REDIS_HOST": "127.0.0.1",
+                "args": "--port=5000 --max_old_space_size=2000000"
+            },
+            "env_staging": {
+                "NODE_ENV": "staging",
+                "NODE_CONFIG_DIR": "/usr/app/frontend/service",
+                "args": "--port=5001"
+            }
+        }
+    ]
+}

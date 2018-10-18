@@ -1,0 +1,34 @@
+# image built on official nodejs v6
+FROM node:latest
+MAINTAINER Maxim Geerinck <geerinck.maxim@gmail.com>
+
+# Install yarn, apt-get update not necessary as its already done in previous image
+# RUN apt-get install graphicsmagick -y && apt-get clean
+
+RUN npm install -g concurrently nodemon typescript --silent
+RUN mkdir -p /usr/app/frontend/client && mkdir -p /usr/app/frontend/service
+
+# CLIENT
+WORKDIR /usr/app/frontend/client
+COPY client/*.json ./
+RUN npm install --silent
+
+# SERVICE
+WORKDIR /usr/app/frontend/service
+COPY service/*.json ./
+RUN npm install --silent
+
+# Install sources
+COPY client/src /usr/app/frontend/client/src
+COPY client/public /usr/app/frontend/client/public
+COPY client/scripts /usr/app/frontend/client/scripts
+COPY client/config /usr/app/frontend/client/config
+COPY client/.babelrc client/.eslintignore client/.eslintrc /usr/app/frontend/client/
+COPY service/src /usr/app/frontend/service/src
+COPY service/tsconfig.json service/tslint.json /usr/app/frontend/service/
+
+# # create env file with the port
+ENV PORT 3000
+EXPOSE $PORT
+
+CMD concurrently -p "[{name}]" -n "SERVICE,CLIENT" -c "bgBlue.bold,bgMagent.bold" "npm run dev --loglevel=silent" "cd ../client && npm run dev-docker"

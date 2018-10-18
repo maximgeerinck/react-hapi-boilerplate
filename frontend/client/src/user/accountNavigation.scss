@@ -1,0 +1,41 @@
+$itemColor: #5039ff;
+.navigation {
+    margin: 25px 0;
+    background: rgba(0, 0, 0, 0.03);
+    ul {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+        li {
+            display: inline-flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            &.active {
+                border-bottom: 1px solid $itemColor;
+            }
+            a {
+                padding: 15px 20px;
+                color: $itemColor;
+                transition: 150ms all ease-in-out;
+                text-align: center;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $itemColor;
+                    color: white;
+                }
+            }
+
+            & + li {
+                margin-left: 15px;
+            }
+        }
+    }
+}

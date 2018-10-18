@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway:900');
+html, body {
+  margin: 0;
+  top: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

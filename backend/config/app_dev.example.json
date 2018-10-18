@@ -1,0 +1,41 @@
+{
+    "database": {
+        "connection": {
+            "host": "",
+            "port": 3306,
+            "user": "",
+            "password": "",
+            "database": "app"
+        }
+    },
+    "mail": {
+        "host": "",
+        "port": 465,
+        "username": "",
+        "password": ""
+    },
+    "authentication": {
+        "jwt": {
+            "secret": "blabla"
+        }
+    },
+    "server": {
+        "ip": "0.0.0.0",
+        "cors_client_origins": ["*"],
+        "cors_headers": [
+            "Accept",
+            "Authorization",
+            "Content-Type",
+            "If-None-Match",
+            "Bearer",
+            "x-http-method-override"
+        ],
+        "cors_credentials": true
+    },
+    "languages": {
+        "fallback": "en_US"
+    },
+    "assets": {
+        "public_dir": "../public"
+    }
+}

@@ -1,0 +1,211 @@
+@import "../variables.scss";
+@import "../media.scss";
+
+$navigation-background-color: rgb(152, 223, 67);
+
+.actionbar {
+    position: fixed;
+    margin: 0;
+    top: 0;
+    width: 100%;
+    min-height: 75px;
+    box-sizing: border-box;
+    z-index: 9999;
+    display: flex;
+    padding: 12px 24px;
+    justify-content: flex-end;
+    left: 0;
+
+    .logo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .barsIcon {
+        border: none;
+        background: none;
+        font-size: 20pt;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 51px;
+        z-index: 9999;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    nav {
+        padding: 20px;
+    }
+
+    @include desktop {
+        padding: 0 20px;
+        box-sizing: border-box;
+        flex-direction: row;
+    }
+
+    .collapsed {
+        display: none;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 100%;
+
+        li {
+            list-style: none;
+            border-bottom: 1px solid rgba(80, 57, 255, 0.2);
+            padding: 10px;
+
+            a {
+                display: inline-flex;
+                padding: 12px 20px;
+                color: #efefef;
+                text-decoration: none;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 150ms all ease-in-out;
+                height: 100%;
+                display: inline-block;
+                box-sizing: border-box;
+                border-radius: 5px;
+                font-size: 11pt;
+                & > span {
+                    margin-right: 3px;
+                }
+                &:hover {
+                    background: $bg-main;
+                    color: white;
+                }
+            }
+        }
+
+        @include desktop {
+            flex-direction: row;
+            justify-content: flex-end;
+
+            li {
+                border: none;
+            }
+        }
+    }
+}
+
+.logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+
+    .toggle {
+        display: block;
+        border: none;
+        background: none;
+        color: white;
+        font-size: 20pt;
+        position: absolute;
+        right: 0;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    @include desktop {
+        justify-content: flex-start;
+        .toggle {
+            display: none;
+        }
+    }
+
+    a {
+        font-weight: 100;
+        font-family: Raleway;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        font-size: 26pt;
+
+        span.green {
+            color: #6acc2f;
+        }
+        span.blue {
+            color: #2fbccc;
+        }
+        span.red {
+            color: #cc2f2f;
+        }
+        span.purple {
+            color: #b52fcc;
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .logoImage {
+        height: 48px;
+        margin-right: 10px;
+        width: 39px;
+        color: transparent;
+    }
+}
+
+.buttonStandOut > a {
+    background: $color-secondary;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.menuWrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    left: 0;
+    width: 75%;
+    z-index: 999;
+
+    .account {
+        padding: 32px;
+        border-bottom: 1px solid rgba(25, 95, 175, 0.1);
+        margin-bottom: 24px;
+    }
+
+    nav {
+        ul {
+            margin: 0;
+            padding: 0;
+    
+            li {
+                a {
+                    padding: 16px 32px;
+                    display: block;
+                    color: black;
+
+                    .icon {
+                        margin-right: 12px;
+                        color: rgba(12, 47, 87, 0.5);
+                    }
+                }                
+            }
+        }
+    }
+
+    
+}

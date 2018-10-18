@@ -1,0 +1,24 @@
+.accountPage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;    
+}
+.buttons {
+    background: #392d2c;
+    display: flex;
+
+    a {
+        flex: 1;
+        padding: 16px;
+        background: none;
+        border: none;
+        color: white;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+
+        .icon {
+            margin: 0 8px;
+        }
+    }
+}

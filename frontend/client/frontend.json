@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "image-rotator-frontend",
+      "script": "npm -- run runserver",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "env_production": {
+        "NODE_ENV": "production",
+        "NODE_CONFIG_DIR": "/root/imagerotator/config",
+        "args": "--port=8100"
+      },
+      "env_staging": {
+        "NODE_ENV": "staging",
+        "NODE_CONFIG_DIR": "/root/imagerotator/config",
+        "args": "--port=8101"
+      }
+    }
+  ]
+}

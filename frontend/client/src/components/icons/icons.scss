@@ -1,0 +1,30 @@
+@mixin icon {
+    height: 20px;
+    width: 20px;
+    display: inline-flex;
+}
+
+@mixin whaleIcon {
+    @include icon;
+    background: url("assets/icons/whales.png") no-repeat;
+    background-size: auto 20px;
+}
+
+.humpbackWhale {
+    @include whaleIcon;
+}
+
+.whale {
+    @include whaleIcon;
+    background-position: -20px 0;
+}
+
+.shark {
+    @include whaleIcon;
+    background-position: -40px 0;
+}
+
+.dolphin {
+    @include whaleIcon;
+    background-position: -60px 0;
+}

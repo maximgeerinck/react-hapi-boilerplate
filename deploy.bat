@@ -1,0 +1,1 @@
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml build app frontend && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d app frontend

@@ -1,0 +1,23 @@
+{
+    "apps": [
+        {
+            "name": "discovery-frontend",
+            "script": "./build/index.js",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "env_production": {
+                "NODE_ENV": "production",
+                "NODE_CONFIG_DIR": "/root/app/config",
+                "REDIS_HOST": "127.0.0.1",
+                "PORT": 3000,
+                "args": "--port=3000"
+            },
+            "env_staging": {
+                "NODE_ENV": "staging",
+                "NODE_CONFIG_DIR": "/root/app/config",
+                "args": "--port=5001"
+            }
+        }
+    ]
+}

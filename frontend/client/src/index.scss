@@ -1,0 +1,26 @@
+@import "./normalize.css";
+@import "./variables.scss";
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: $font-primary;
+    width: 100%;
+    max-width: 100vw;
+}
+
+button, input, optgroup, select, textarea, p {
+    font-family: $font-primary;
+}
+
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background: $color-primary;
+}
+
+p {
+    line-height: 16pt;
+}

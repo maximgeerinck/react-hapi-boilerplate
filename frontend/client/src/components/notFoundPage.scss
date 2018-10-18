@@ -1,0 +1,41 @@
+@import "../variables.scss";
+
+.page {
+    text-align: center;
+
+    hr {
+        width: 50%;
+        border-color: transparentize($color-secondary, 0.6);
+        margin: 50px auto;
+    }
+
+    .links {
+        padding: 0;
+        margin: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        li {
+            list-style: none;
+            display: inline-flex;
+
+            a {
+                padding: 10px 15px;
+                background: $color-secondary;
+                border: 2px solid #40698a;
+                color: white;
+
+                &:hover {
+                    background-color: #04a0e5;
+                    transition: 150ms all ease-in-out;
+                }
+            }
+
+            & + li {
+                margin-left: 10px;
+            }
+        }
+    }
+}

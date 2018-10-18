@@ -1,0 +1,29 @@
+.recharts-default-legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recharts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+}
+
+.recharts-legend-wrapper {
+    bottom: -3px !important;
+    left: initial !important;
+    width: 100% !important;
+    max-width: 500px;
+}
+
+.recharts-legend-item {
+    display: flex;
+}
+
+.recharts-text {
+    color: white;
+}

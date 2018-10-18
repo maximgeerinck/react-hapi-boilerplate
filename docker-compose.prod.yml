@@ -1,0 +1,92 @@
+# IN PROD: https://docs.docker.com/compose/production/
+# https://www.digitalocean.com/community/tutorials/how-to-provision-and-manage-remote-docker-hosts-with-docker-machine-on-ubuntu-16-04
+
+version: '2'
+services:
+
+  app:    
+    restart: always
+    environment:
+      - VIRTUAL_HOST=api.discordservers.online,api.discordservers.club
+      - VIRTUAL_PORT=5000
+      - LETSENCRYPT_HOST=api.discordservers.online,api.discordservers.club
+      - LETSENCRYPT_EMAIL=admin@icotracker.org
+      - NODE_ENV=production
+    volumes:
+      - volume_assets:/usr/app/public      
+    # command: ["yarn global add knex","cd src", "knex migrate:latest", "knex seed:run"]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    restart: always    
+    environment:      
+      - VIRTUAL_HOST=discordservers.online,discordservers.club
+      - VIRTUAL_PORT=8000
+      - LETSENCRYPT_HOST=discordservers.online,discordservers.club
+      - LETSENCRYPT_EMAIL=admin@discoverdservers.club
+      - NODE_ENV=production
+
+  # nginx-proxy: split up in nginx and docker-gen to prevent docker socket bound to publicly exposed container
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports: ["80:80", "443:443"]
+    volumes:
+      - nginx_conf:/etc/nginx/conf.d
+      - nginx_hosts:/etc/nginx/vhost.d
+      - nginx_certs:/etc/nginx/certs:rw
+      - nginx_html:/usr/share/nginx/html
+
+  # docker-gen with the template file
+  nginx-gen:
+    build: ./nginx-gen
+    container_name: nginx-gen
+    volumes_from:
+      - nginx
+    depends_on:
+      - app
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+
+  # Checks and renews certificates if necessary
+  letsencrypt-nginx-proxy-companion:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes_from:
+      - nginx
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /tmp/templates:/etc/docker-gen/templates
+    environment:
+      - NGINX_DOCKER_GEN_CONTAINER=nginx-gen
+      # - ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory
+
+  # ghost_blog:
+  #   build:
+  #     context: ./ghost    
+  #   ports: ["3100:2368"]
+  #   environment:      
+  #     - VIRTUAL_HOST=blog.icotracker.org
+  #     - VIRTUAL_PORT=3100
+  #     - LETSENCRYPT_HOST=blog.icotracker.org
+  #     - LETSENCRYPT_EMAIL=admin@icotracker.org   
+  #   volumes:
+  #     - blog:/var/lib/ghost/content
+
+  # admin:
+  #   environment:
+  #     - FOREST_ENV_SECRET=f8eab52d79ebb4c1e025cd4c49868da1ec0713f2a4449d39ded67e75db4f036a
+  #     - FOREST_AUTH_SECRET=tyitgy48MFD0DIgLsl6EnmdLlLssda7A
+
+volumes:
+  nginx_html:
+
+  nginx_certs:
+
+  nginx_hosts:
+
+  nginx_conf:
+
+  # blog:
+  #   external: true

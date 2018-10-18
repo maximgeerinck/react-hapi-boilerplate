@@ -1,0 +1,360 @@
+$input-background: #efefef;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    
+    label {
+        padding: 5px 0;
+    }
+}
+
+.group {
+    display: grid;
+    grid-column-gap: 50px;
+    grid-template-columns: auto auto auto;
+
+    .wrapper {
+
+    }
+}
+
+.form {
+    
+    label {
+        color: #9b9b9b;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 10pt;
+        margin-left: 12px;
+        font-weight: bold;
+    }
+
+    input {
+        padding: 12px;
+        border: none;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+
+        color: #4a4a4a;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.invalid {
+            color: #ff5a43;
+            border-color: #ff5a43;
+        }
+    }
+}
+
+.validationError {
+    color: #ff5a43;
+    font-style: italic;
+    font-size: 9pt;
+    margin: 10px;
+}
+
+// @mixin checkbox($size) {
+//     label {
+//         display: inline-block;
+//         user-select: none;
+//         position: relative;
+//         width: $size;
+//         height: $size;
+//         border: 2px solid rgba(63, 105, 138, 0.65);
+//         background: $input-background;
+//         color: darken(white, 40);
+//         cursor: pointer;
+//         overflow: hidden;
+//         text-align: center;
+//         &:after {
+//             content: "";
+//             display: block;
+//             margin-left: 11px;
+//             margin-top: 4px;
+//             width: 5px;
+//             height: 12px;
+//             border: solid white;
+//             border-width: 0 4px 4px 0;
+//             border-color: rgba(0, 0, 0, 0.1);
+//             transform: rotate(45deg);
+//         }
+//         &:hover {
+//             border-color: lighten($input-background, 20);
+//             color: darken(white, 10);
+//         }
+//     }
+
+//     input {
+//         display: none;
+//         &:checked {
+//             background: black;
+//         }
+
+//         &:checked +  {
+//             .checkedLabel {
+//                 background: #6d9c68;
+//                 &:after {
+//                     border-color: white;
+//                 }
+//             }
+//         }
+//     }
+// }
+// @mixin columns($amount) {
+//     min-width: 100%/$amount;
+//     max-width: 100%/$amount;
+//     padding: 10px;
+//     box-sizing: border-box;
+
+//     &:first-child {
+//         padding-left: 0;
+//     }
+
+//     &:nth-child(#{$amount}n + 1) {
+//         padding-left: 0;
+//     }
+
+//     &::nth-child(#{$amount}n) {
+//         padding-right: 0;
+//     }
+// }
+
+// @mixin form() {
+//     width: 100%;
+
+//     h3 {
+//         font-weight: 300;
+//         font-family: Raleway;
+//         color: #ffffff;
+//         padding: 20px;
+//         color: white;
+//         margin: 50px 10px 20px 10px;
+//         border-bottom: 4px solid #55b1c5;
+//     }
+
+//     .row {
+//         display: flex;
+//         justify-content: space-between;
+//         input,
+//         textarea {
+//             width: 100%;
+//         }
+
+//         & > .group {
+//             & + .group {
+//                 padding-left: 10px;
+//                 margin-top: 0;
+//             }
+//         }
+//     }
+
+//     .group {
+//         display: flex;
+//         flex-direction: column;
+//         flex: 1;
+//         // flex-wrap: wrap;
+//         & + .group {
+//             margin-top: 10px;
+//         }
+
+//         &.row {
+//             flex-direction: row;
+//             justify-content: flex-start;
+//             align-items: center;
+//         }
+
+//         input,
+//         textarea,
+//         .input {
+//             &:disabled {
+//                 background: rgba(0, 0, 0, 0.05);
+//                 color: #585858;
+//             }
+
+//             background: $input-background;
+//             display: block;
+//             padding: 15px 20px;
+//             border-radius: 3px;
+//             border: 1px solid darken($input-background, 10);
+//             box-sizing: border-box;
+//             color: darken(white, 40);
+//             &:focus {
+//                 outline: 0;
+//                 color: lighten(black, 10);
+//                 box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.1);
+//                 border-color: lighten($input-background, 5);
+//             }
+//             &.invalid {
+//                 border-bottom-color: #d45959;
+//                 color: #d45959;
+//             }
+//         }
+//         .checkbox {
+//             @include checkbox(28px);
+//         }
+//         label {
+//             display: block;
+//             margin: 5px 0;
+//             text-transform: uppercase;
+//             font-size: 9pt;
+//             color: #545454;
+//         }
+//         & > .descriptor {
+//             font-style: italic;
+//             color: gray;
+//             margin: 5px;
+//             font-size: 10pt;
+//         }
+//     }
+
+//     .inline {
+//         flex-direction: row;
+//     }
+
+//     .validationError {
+//         font-size: 10pt;
+//         color: #d45959;
+//         display: block;
+//         padding: 5px;
+//         flex-basis: 0%;
+//     }
+
+//     .column {
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: wrap;
+
+//         .group {
+//             @include columns(3);
+
+//             & + .group {
+//                 margin: 0;
+//             }
+//         }
+//     }
+// }
+
+// .form {
+//     @include form();
+// }
+
+// .formFullPage {
+//     @include form();
+//     .group {
+//         input,
+//         textarea {
+//             background: rgba(0, 0, 0, 0.28);
+//             border: none;
+//             color: darken(white, 20);
+//             &:focus {
+//                 outline: 0;
+//                 color: white;
+//             }
+//         }
+//         label {
+//             display: block;
+//             margin: 5px 0;
+//             text-transform: uppercase;
+//             font-size: 9pt;
+//             color: #a7a7a7;
+//         }
+//     }
+// }
+
+// @media only screen and (min-width: 1024px) {
+//     .form {
+//         flex-direction: column;
+//         .group {
+//             // flex-direction: row;
+//         }
+//     }
+// }
+
+// .noAccount {
+//     text-align: center;
+//     margin: 10px 0;
+//     a {
+//         color: white;
+//         text-decoration: none;
+//     }
+// }
+
+.validationSummary {
+    padding: 10px;
+    background: rgba(212, 89, 89, 0.31);
+    color: white;
+    margin: 10px 0;
+    font-size: 10pt;
+    text-align: center;
+}
+
+// .forgotPassword {
+//     margin: 10px;
+//     a {
+//         color: rgba(255, 255, 255, 0.68);
+//         font-size: 10pt;
+//         text-decoration: none;
+//         &:hover {
+//             text-decoration: underline;
+//         }
+//     }
+// }
+
+$button-color: white;
+$button-bg: #6d9c68;
+$button-bg-hover: saturate($button-bg, 10);
+$button-shadow-hover: saturate($button-bg, 20);
+
+$button-danger-bg: #dc7b7b;
+$button-danger-bg-hover: saturate($button-danger-bg, 20);
+$button-danger-shadow-hover: saturate($button-danger-bg, 30);
+
+$button-info-bg: #68999c;
+$button-info-bg-hover: saturate($button-info-bg, 20);
+$button-info-shadow-hover: saturate($button-info-bg, 30);
+
+$button-gray-bg: gray;
+$button-gray-bg-hover: darken($button-gray-bg, 5);
+$button-gray-shadow-hover: darken($button-gray-bg, 10);
+
+.button {
+    border: none;
+    background: $button-bg;
+    color: $button-color;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    cursor: pointer;
+    transition: 150ms all ease-in-out;
+    &:hover {
+        box-shadow: inset 0 0 0 3px $button-shadow-hover;
+        background: $button-bg-hover;
+    }
+    &.error,
+    &.danger {
+        background: $button-danger-bg;
+        &:hover {
+            background: $button-danger-bg-hover;
+            box-shadow: inset 0 0 0 3px $button-danger-shadow-hover;
+        }
+    }
+    &.info {
+        background: $button-info-bg;
+        &:hover {
+            background: $button-info-bg-hover;
+            box-shadow: inset 0 0 0 3px $button-info-shadow-hover;
+        }
+    }
+
+    &.gray {
+        background: $button-gray-bg;
+        &:hover {
+            background: $button-gray-bg-hover;
+            box-shadow: inset 0 0 0 3px $button-gray-shadow-hover;
+        }
+    }
+}

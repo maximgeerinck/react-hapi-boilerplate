@@ -1,0 +1,57 @@
+.page {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0 35%;
+    box-sizing: border-box;
+}
+.form {
+    margin-top: 100px;
+
+    .wrapper {
+        & + .wrapper {
+            margin-top: 20px;
+        }
+    }
+    label {
+        color: rgba(255, 255, 255, 0.50);
+        font-weight: 100;
+    }
+
+    .input {
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        padding: 10px;
+        border-bottom: 1px solid #2d72c1;
+        color: #67a3e6;
+
+        &:focus {
+            outline: none;
+            color: #ececec;
+            border-color: #489af9;
+        }
+    }
+
+    .loginButton {
+        margin-top: 25px;
+        background: #35bd78 linear-gradient(135deg, #35bd78, #5edca8);
+        border: none;
+        width: 100%;
+        padding: 20px;
+        color: white;
+        border-radius: 5px;
+        transition: 150ms all ease-in;
+
+        &:hover {
+            background-color: #35bd78;
+            cursor: pointer;
+            box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .link {
+        margin: 24px 0;
+    }
+}

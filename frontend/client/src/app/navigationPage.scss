@@ -1,0 +1,27 @@
+@import "../variables.scss";
+
+.navigationPage {
+    nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100%;
+        ul {
+            padding: 0;
+            margin: 0;
+            li {
+                text-align: center;
+                list-style: none;
+                margin: 16px;
+                a {
+                    display: block;
+                    font-weight: bold;
+                    font-size: 16pt;
+                    color: $color-secondary;
+                }            
+            }
+        }
+    }
+}

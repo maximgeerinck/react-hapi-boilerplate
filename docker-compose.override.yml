@@ -1,0 +1,50 @@
+version: '2'
+services:
+
+  mongo:
+    environment:
+      - MONGO_PORT_27017_TCP_ADDR=0.0.0.0
+
+  app:
+    command: npm run dev
+    volumes:
+      - ./backend/src:/usr/app/src
+      - ./backend/config/app_dev.json:/usr/app/build/config/app_dev.json:ro
+      - ./backend/config:/usr/app/config:ro
+      - ./backend/package.json:/usr/app/package.json:ro         
+      - ./backend/public:/usr/app/public   
+      - ./backend/mails:/usr/app/mails
+      - ./backend/tests:/usr/app/tests
+      - ./backend/tsconfig.json:/usr/app/tsconfig.json
+    ports: ["56745:56745"]
+    environment:      
+      - NODE_ENV=development
+  
+  # admin:
+  #   command: npm run dev
+  #   volumes:
+  #     - ./admin/src:/usr/icoagent/src
+  #     - ./admin/package.json:/usr/icoagent/package.json
+  #   environment:      
+  #     - NODE_ENV=development    
+
+  frontend:
+    build: ./frontend      
+    volumes:
+      - ./frontend/client/src:/usr/app/frontend/client/src
+      - ./frontend/client/public:/usr/app/frontend/client/public
+      - ./frontend/client/scripts:/usr/app/frontend/client/scripts
+      - ./frontend/client/config:/usr/app/frontend/client/config
+      - ./frontend/client/package.json:/usr/app/frontend/client/package.json
+      - ./frontend/client/.eslintrc:/usr/app/frontend/client/.eslintrc
+      - ./frontend/client/.babelrc:/usr/app/frontend/client/.babelrc
+      - ./frontend/client/.eslintignore:/usr/app/frontend/client/.eslintignore
+      - ./frontend/service/src:/usr/app/frontend/service/src
+      - ./frontend/service/public:/usr/app/frontend/service/public
+      - ./frontend/service/package.json:/usr/app/frontend/service/package.json
+      - ./frontend/service/tsconfig.json:/usr/app/frontend/service/tsconfig.json
+      - ./frontend/service/tslint.json:/usr/app/frontend/service/tslint.json
+    ports: ["3100:3100", "3101:3101"]
+    environment:
+      - NODE_ENV=development
+      - "IP=${IP}"

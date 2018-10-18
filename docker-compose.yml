@@ -1,0 +1,40 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - volume_database:/data/db      
+      - volume_assets:/usr/app/public
+    ports: ["127.0.0.1:27017:27017"]
+    environment:
+      - MONGO_PORT_27017_TCP_ADDR=127.0.0.1
+  app:
+    build:
+      context: ./backend
+    ports: ["5000:5000"]
+    depends_on: ["mongo"]
+    environment: [ "NODE_ENV=production" ]   
+
+  frontend:
+    build:
+      context: ./frontend     
+    ports: ["3000:3000"]
+    environment: ["NODE_ENV=production"]
+
+  redis:
+    image: redis
+    ports: ["6379:6379"]
+    
+  # admin:
+  #   build:
+  #     context: ./admin
+  #   ports: ["3000:5000"]
+  #   environment:
+  #     - FOREST_ENV_SECRET=28b4b77ade837f05ba638fbbe8b7a55ba16d2c769c89e0aab9267cb6bbf34d0f
+  #     - FOREST_AUTH_SECRET=ehK4jF13cdc8rFLsCm90kwAfp4iog8O1
+
+volumes:
+  volume_database:
+    external: true
+  volume_assets:
+    external: true
