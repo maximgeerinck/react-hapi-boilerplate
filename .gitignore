@@ -28,5 +28,7 @@ backups/
 assets/Thumbs.db
 
 backend/public
+backend/config/app_dev.json
+backend/config/app_prod.json
 *.psd
 frontend/service/public
